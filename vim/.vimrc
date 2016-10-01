@@ -82,6 +82,7 @@ set showmode            " Show current vim mode
 set background=dark
 colorscheme solarized
 set nu
+set relativenumber
 
 set bs=2                " allow backspacing over everything in insert mode
 set viminfo='20,\"50    " read/write a .viminfo file, don't store more

@@ -1,22 +1,19 @@
 " Don't use vi compatibility; I want all the new features in Vim
 set nocompatible
 
-" Version 6.0-specific stuff
-if version >= 600
-    " Enable pathogen plugin
-    call pathogen#infect()
-    call pathogen#helptags()
+" Enable pathogen plugin
+call pathogen#infect()
+call pathogen#helptags()
 
-    syntax enable
-    filetype on
-    filetype plugin on
-    filetype indent on
-else
-    syntax on
-endif
+syntax enable
+filetype on
+filetype plugin on
+filetype indent on
 
 set encoding=utf-8
 set list listchars=trail:→
+
+set hidden " hide instead of closing buffers
 
 
 " Ultisnips
@@ -87,7 +84,8 @@ set relativenumber
 set bs=2                " allow backspacing over everything in insert mode
 set viminfo='20,\"50    " read/write a .viminfo file, don't store more
                         " than 50 lines of registers
-set history=50          " keep 50 lines of command line history
+set history=1000        " keep 1000 lines of command line history
+set undolevels=1000     " 1000 undo
 set ruler               " show the cursor position all the time
 set hlsearch          " don't highlight search matches
 set incsearch           " incremental (emacs-style) search
@@ -127,6 +125,12 @@ endif
 " }}}
 
 " Key mappings {{{
+
+" Use ; instead of :
+nnoremap ; :
+
+" Sudo write
+cmap w!! w !sudo tee % > /dev/null
 
 " Allow the . to execute once for each line in visual selection
 vnoremap . :normal .<CR>

@@ -25,3 +25,6 @@
 [submodule "vim/.vim/bundle/vim-scala"]
 	path = vim/.vim/bundle/vim-scala
 	url = https://github.com/derekwyatt/vim-scala
+[submodule "vim/.vim/bundle/vim-dispatch"]
+	path = vim/.vim/bundle/vim-dispatch
+	url = git://github.com/tpope/vim-dispatch.git

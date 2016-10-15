@@ -149,13 +149,14 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 noremap <F7> <Esc>:call IspellCheck()<CR><Esc>
 
 " Programming Keys:
-"   F9  = Make
+"   F9  = Dispatch which defaults to Make if no dispatcher is set, which
+"   wraps make
 "   F10 = Next Error
 "   F11 = Prev Error
-inoremap <F9> <Esc>:make<CR>
+inoremap <F9> <Esc>:Dispatch<CR>
 inoremap <F10> <Esc>:cnext<CR>
 inoremap <F11> <Esc>:cprev<CR>
-noremap <F9> <Esc>:make<CR>
+noremap <F9> <Esc>:Dispatch<CR>
 noremap <F10> <Esc>:cnext<CR>
 noremap <F11> <Esc>:cprev<CR>
 
@@ -193,11 +194,6 @@ if has("autocmd")
     augroup prog
         au!
         au BufRead *.c,*.cc,*.cpp,*.h,*.java set formatoptions=croql cindent nowrap nofoldenable foldmethod=syntax
-        au BufEnter *.java      map <C-Return> :w\|:!javac %<CR>
-        au BufEnter *.c         map <C-Return> :w\|:!gcc %<CR>
-        au BufEnter *.cc,*.cpp  map <C-Return> :w\|:!g++ %<CR>
-        au BufLeave *.java,*.c,*.cc unmap <C-Return>
-
         au BufEnter *.go set nolist
 
         " Don't expand tabs to spaces in Makefiles
@@ -206,6 +202,8 @@ if has("autocmd")
 
         " Set up folding for python
         au FileType python set nofoldenable foldmethod=indent
+        " Set dispatchers
+        au FileType java let b:dispatch = 'javac %'
     augroup END
     " }}}
 

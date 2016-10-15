@@ -15,6 +15,7 @@ set list listchars=trail:→
 
 set hidden " hide instead of closing buffers
 
+set updatetime=100  " freq of updating swap and status bar when cursor hovers
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger = "<s-tab>"
@@ -23,9 +24,18 @@ let g:UltiSnipsExpandTrigger = "<s-tab>"
 let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = "C0111"
 
-"Ctrl-P
-nnoremap <silent> <Leader>p :CtrlPTag<CR>
+" vim-go
+let g:go_list_type = "quickfix"  " only use quickfix list for errors
+let g:go_highlight_types = 1
+let g:go_metalinter_autosave = 1  " run linters on autosave
+let g:go_auto_type_info = 1
 
+" highlighting can be expensive and noisy
+" let g:go_highlight_types = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_build_constraints = 1
 
 " Tagbar Additional language support
 let g:tagbar_type_rust = {
@@ -103,10 +113,24 @@ set nowrap
 set expandtab
 set tabstop=4
 
+" Write buffer before running make
+set autowrite
+
+
+" Color Scheme (only if GUI running) {{{
+if has("gui_running")
+    colorscheme solarized
+endif
+" }}}
+
+" Key mappings {{{
+
 let mapleader = ","
 
 nmap <Leader>nt :NERDTreeToggle<CR>
 nmap <Leader>t :TagbarToggle<CR>
+nmap <Leader>d :GoDeclsDir<CR>
+nnoremap <silent> <Leader>p :CtrlPTag<CR>
 
 " Move text, but keep highlight
 vnoremap > ><CR>gv
@@ -118,13 +142,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Color Scheme (only if GUI running) {{{
-if has("gui_running")
-    colorscheme solarized
-endif
-" }}}
-
-" Key mappings {{{
 
 " Use ; instead of :
 nnoremap ; :
@@ -154,11 +171,10 @@ noremap <F7> <Esc>:call IspellCheck()<CR><Esc>
 "   F10 = Next Error
 "   F11 = Prev Error
 inoremap <F9> <Esc>:Dispatch<CR>
-inoremap <F10> <Esc>:cnext<CR>
-inoremap <F11> <Esc>:cprev<CR>
+noremap <C-n> <Esc>:cnext<CR>
+noremap <C-m> <Esc>:cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 noremap <F9> <Esc>:Dispatch<CR>
-noremap <F10> <Esc>:cnext<CR>
-noremap <F11> <Esc>:cprev<CR>
 
 " Buffer Switching:
 "   F2 = next buffer
@@ -202,6 +218,7 @@ if has("autocmd")
 
         " Set up folding for python
         au FileType python set nofoldenable foldmethod=indent
+
         " Set dispatchers
         au FileType java let b:dispatch = 'javac %'
     augroup END
@@ -211,8 +228,8 @@ if has("autocmd")
     " Reread configuration of Vim if .vimrc is saved {{{
     augroup VimConfig
         au!
-        autocmd BufWritePost ~/.vimrc       so ~/.vimrc
-        autocmd BufWritePost vimrc          so ~/.vimrc
+        autocmd BufWritePost .vimrc       so .vimrc
+        autocmd BufWritePost vimrc          so vimrc
     augroup END
     " }}}
 

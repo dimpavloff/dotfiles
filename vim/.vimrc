@@ -218,6 +218,7 @@ if has("autocmd")
 
         " Set up folding for python
         au FileType python set nofoldenable foldmethod=indent
+        au FileType python syn keyword pythonStatement async await
 
         " Set dispatchers
         au FileType java let b:dispatch = 'javac %'

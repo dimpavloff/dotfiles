@@ -1,4 +1,4 @@
-" Don't use vi compatibility; I want all the new features in Vim
+" Don't use vi compatibility
 set nocompatible
 
 " Enable pathogen plugin
@@ -16,6 +16,8 @@ set list listchars=trail:→
 set hidden " hide instead of closing buffers
 
 set updatetime=100  " freq of updating swap and status bar when cursor hovers
+
+autocmd! bufwritepost .vimrc source %
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger = "<s-tab>"

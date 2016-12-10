@@ -17,12 +17,12 @@ set hidden " hide instead of closing buffers
 
 set updatetime=100  " freq of updating swap and status bar when cursor hovers
 
-autocmd! bufwritepost .vimrc source %
-
 " Ultisnips
 let g:UltiSnipsExpandTrigger = "<s-tab>"
 
 " Pymode
+let g:pymode = 1
+let g:pymode_python = 'python3'  " use a modern Python
 let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = "C0111"
 
@@ -242,25 +242,6 @@ if has("autocmd")
     " }}}
 
 
-"    " C programming auto commands {{{
-    augroup cprog
-        au!
-
-        " When starting to edit a file:
-        "   For C and C++ files set formatting of comments and set C-indenting on.
-        "   For other files switch it off.
-        "   Don't change the order, it's important that the line with * comes first.
-        "autocmd FileType *      set formatoptions=tcql nocindent comments&
-        "autocmd FileType c,cpp  set formatoptions=croql comments=sr:/*,mb:*,el:*/,://
-
-        " Automatic "folding" in C code.  This is cool.
-        "if version >= 600
-        "    "au FileType c set foldenable foldmethod=indent
-        "    au FileType c,cpp set nofoldenable foldmethod=syntax
-        "    au FileType c,cpp syn region Block start="{" end="}" transparent fold
-        "    "au FileType c syn region Comment start="/\*" end="\*/" fold
-        "endif
-    augroup END
 "    " }}}
 
 endif " has("autocmd")

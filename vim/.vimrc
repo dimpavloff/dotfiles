@@ -219,7 +219,12 @@ if has("autocmd")
         au BufLeave  [Mm]akefile*  set et
 
         " Set up folding for python
-        au FileType python set nofoldenable foldmethod=indent
+        " au FileType python set nofoldenable foldmethod=syntax
+        " au FileType python set foldlevel=10
+        " Enable SimpleFold instead
+        au BufWinEnter *.py setlocal nofoldenable foldexpr=SimpylFold(v:lnum) foldmethod=expr
+        au BufWinLeave *.py setlocal foldexpr< foldmethod<
+
         au FileType python syn keyword pythonStatement async await
 
         " Set dispatchers

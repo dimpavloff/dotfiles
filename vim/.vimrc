@@ -288,3 +288,6 @@ let c_space_errors=1
 "let perl_fold=1          " turn on perl folding capabilities
 " }}}
 
+if filereadable("~/local/vim.vim")
+    so "~/local/vim.vim"
+endif

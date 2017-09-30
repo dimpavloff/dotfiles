@@ -31,3 +31,6 @@
 [submodule "vim/.vim/bundle/SimpylFold"]
 	path = vim/.vim/bundle/SimpylFold
 	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule "vim/.vim/bundle/wal.vim"]
+	path = vim/.vim/bundle/wal.vim
+	url = https://github.com/dylanaraps/wal.vim.git

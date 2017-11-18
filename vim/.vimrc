@@ -70,6 +70,7 @@ let g:tagbar_type_scala = {
     \ ]
     \ }
 
+let g:tagbar_autofocus = 1
 
 " Low priority filename suffixes for filename completion {{{
 set suffixes-=.h        " Don't give .h low priority

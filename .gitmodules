@@ -31,3 +31,6 @@
 [submodule "vim/.vim/bundle/wal.vim"]
 	path = vim/.vim/bundle/wal.vim
 	url = https://github.com/dylanaraps/wal.vim.git
+[submodule "vim/.vim/bundle/python-mode"]
+	path = vim/.vim/bundle/python-mode
+	url = https://github.com/python-mode/python-mode

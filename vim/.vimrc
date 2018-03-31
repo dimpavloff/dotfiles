@@ -22,6 +22,7 @@ let g:UltiSnipsExpandTrigger = "<s-tab>"
 
 " Pymode
 let g:pymode = 1
+let g:pymode_run = 0
 let g:pymode_rope = 0
 let g:pymode_python = 'python3'  " use a modern Python
 let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
@@ -29,8 +30,10 @@ let g:pymode_lint_ignore = "C0111"
 let g:pymode_rope_goto_definition_bind = 'gd'
 let g:pymode_rope_goto_definition_cmd = 'e'
 " jedi-vim
-let g:jedi#goto_command = 'gd'
+" let g:jedi#goto_command = 'gd'
 let g:jedi#force_py_version = 3
+let g:jedi#goto_assignments_command = "gd"
+let g:jedi#usages_command = "<leader>u"
 
 " vim-go
 let g:go_list_type = "quickfix"  " only use quickfix list for errors

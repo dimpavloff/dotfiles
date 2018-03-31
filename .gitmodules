@@ -34,3 +34,6 @@
 [submodule "vim/.vim/bundle/python-mode"]
 	path = vim/.vim/bundle/python-mode
 	url = https://github.com/python-mode/python-mode
+[submodule "vim/.vim/bundle/jedi-vim"]
+	path = vim/.vim/bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git

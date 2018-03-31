@@ -22,18 +22,24 @@ let g:UltiSnipsExpandTrigger = "<s-tab>"
 
 " Pymode
 let g:pymode = 1
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_python = 'python3'  " use a modern Python
 let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe']
 let g:pymode_lint_ignore = "C0111"
 let g:pymode_rope_goto_definition_bind = 'gd'
 let g:pymode_rope_goto_definition_cmd = 'e'
+" jedi-vim
+let g:jedi#goto_command = 'gd'
+let g:jedi#force_py_version = 3
 
 " vim-go
 let g:go_list_type = "quickfix"  " only use quickfix list for errors
 let g:go_highlight_types = 1
 let g:go_metalinter_autosave = 1  " run linters on autosave
 let g:go_auto_type_info = 1
+
+" rust.vim
+let g:rustfmt_autosave = 1
 
 " highlighting can be expensive and noisy
 " let g:go_highlight_types = 1
@@ -42,36 +48,41 @@ let g:go_auto_type_info = 1
 " let g:go_highlight_extra_types = 1
 " let g:go_highlight_build_constraints = 1
 
+" fzf
+" complete entire line
+" imap <c-x><c-l> <plug>(fzf-complete-line) 
+
 " Tagbar Additional language support
 let g:tagbar_type_rust = {
-    \ 'ctagstype' : 'rust',
-    \ 'kinds' : [
-        \'T:types,type definitions',
-        \'f:functions,function definitions',
-        \'g:enum,enumeration names',
-        \'s:structure names',
-        \'m:modules,module names',
-        \'c:consts,static constants',
-        \'t:traits,traits',
-        \'i:impls,trait implementations',
-    \]
-    \}
+   \ 'ctagstype' : 'rust',
+   \ 'kinds' : [
+       \'T:types,type definitions',
+       \'f:functions,function definitions',
+       \'g:enum,enumeration names',
+       \'s:structure names',
+       \'m:modules,module names',
+       \'c:consts,static constants',
+       \'t:traits',
+       \'i:impls,trait implementations',
+   \]
+   \}
 
 let g:tagbar_type_scala = {
-    \ 'ctagstype' : 'Scala',
+    \ 'ctagstype' : 'scala',
+    \ 'sro'       : '.',
     \ 'kinds'     : [
-        \ 'p:packages:1',
-        \ 'V:values',
-        \ 'v:variables',
-        \ 'T:types',
-        \ 't:traits',
-        \ 'o:objects',
-        \ 'a:aclasses',
-        \ 'c:classes',
-        \ 'r:cclasses',
-        \ 'm:methods'
+      \ 'p:packages',
+      \ 'T:types:1',
+      \ 't:traits',
+      \ 'o:objects',
+      \ 'O:case objects',
+      \ 'c:classes',
+      \ 'C:case classes',
+      \ 'm:methods',
+      \ 'V:values:1',
+      \ 'v:variables:1'
     \ ]
-    \ }
+\ }
 
 let g:tagbar_autofocus = 1
 

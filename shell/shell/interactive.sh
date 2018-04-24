@@ -24,3 +24,6 @@ alias gstd='git stash drop'
 
 # Git log find by commit message
 function glf() { git log --all --grep="$1"; }
+
+# run emacs daemon if not running and connect
+alias emacs='emacsclient -c -a ""'

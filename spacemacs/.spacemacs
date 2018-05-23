@@ -44,7 +44,8 @@ values."
      emacs-lisp
      evil-commentary
      git
-     go
+     (go :variables
+         go-tab-width 4)
      helm
      python
      rust

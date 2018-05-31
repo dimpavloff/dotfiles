@@ -51,7 +51,10 @@ This function should only modify configuration layer settings."
          go-tab-width 4)
      helm
      (python :variables
-             python-shell-interpreter 'ipython3)
+             flycheck-python-flake8-executable "python3"
+             flycheck-python-pycompile-executable "python3"
+             flycheck-python-pylint-executable "python3"
+             python-shell-interpreter "ipython3")
      rust
      (shell :variables
             shell-default-height 30

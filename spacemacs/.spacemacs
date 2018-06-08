@@ -50,13 +50,15 @@ This function should only modify configuration layer settings."
      (go :variables
          go-tab-width 4)
      helm
+     json
      protobuf
      (python :variables
              flycheck-python-flake8-executable "python3"
              flycheck-python-pycompile-executable "python3"
              flycheck-python-pylint-executable "python3"
              python-shell-interpreter "ipython3")
-     rust
+     (rust :variables
+           rust-format-on-save t)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -479,11 +481,12 @@ This function is called at the very end of Spacemacs initialization."
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (protobuf-mode yasnippet-snippets yapfify yaml-mode xterm-color ws-butler winum volatile-highlights vi-tilde-fringe uuidgen toml-mode toc-org symon swift-mode string-inflection sql-indent spaceline-all-the-icons all-the-icons memoize spaceline powerline smeargle shell-pop restart-emacs rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode password-generator paradox spinner overseer org-bullets open-junk-file neotree nameless multi-term move-text monokai-theme magit-svn magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint insert-shebang indent-guide importmagic epc ctable concurrent deferred hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio godoctor go-tag go-rename go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flycheck-rust flycheck-pos-tip flycheck-bashate flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens smartparens paredit evil-args evil-anzu anzu eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump define-word cython-mode counsel-projectile projectile counsel swiper ivy pkg-info epl company-statistics company-shell company-quickhelp pos-tip company-go go-mode company-anaconda company column-enforce-mode clean-aindent-mode centered-cursor-mode cargo markdown-mode rust-mode auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed anaconda-mode pythonic f dash s aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core ac-ispell auto-complete popup which-key use-package pcre2el org-plus-contrib hydra font-lock+ exec-path-from-shell evil goto-chg undo-tree diminish bind-map bind-key async))))
+    (web-beautify json-navigator hierarchy json-mode json-snatcher json-reformat protobuf-mode yasnippet-snippets yapfify yaml-mode xterm-color ws-butler winum volatile-highlights vi-tilde-fringe uuidgen toml-mode toc-org symon swift-mode string-inflection sql-indent spaceline-all-the-icons all-the-icons memoize spaceline powerline smeargle shell-pop restart-emacs rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort popwin pippel pipenv pip-requirements persp-mode password-generator paradox spinner overseer org-bullets open-junk-file neotree nameless multi-term move-text monokai-theme magit-svn magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint insert-shebang indent-guide importmagic epc ctable concurrent deferred hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make helm-gitignore request helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio godoctor go-tag go-rename go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flycheck-rust flycheck-pos-tip flycheck-bashate flycheck flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens smartparens paredit evil-args evil-anzu anzu eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump define-word cython-mode counsel-projectile projectile counsel swiper ivy pkg-info epl company-statistics company-shell company-quickhelp pos-tip company-go go-mode company-anaconda company column-enforce-mode clean-aindent-mode centered-cursor-mode cargo markdown-mode rust-mode auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed anaconda-mode pythonic f dash s aggressive-indent ace-window ace-link ace-jump-helm-line helm avy helm-core ac-ispell auto-complete popup which-key use-package pcre2el org-plus-contrib hydra font-lock+ exec-path-from-shell evil goto-chg undo-tree diminish bind-map bind-key async)))
+ '(paradox-github-token t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

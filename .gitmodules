@@ -37,3 +37,7 @@
 [submodule "vim/.vim/bundle/jedi-vim"]
 	path = vim/.vim/bundle/jedi-vim
 	url = https://github.com/davidhalter/jedi-vim.git
+[submodule "spacemacs/.emacs.d"]
+	path = spacemacs/.emacs.d
+	url = https://github.com/syl20bnr/spacemacs
+	branch = develop

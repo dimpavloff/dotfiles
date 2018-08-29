@@ -472,7 +472,7 @@ This function is called only while dumping Spacemacs configuration. You can
 dump."
   )
 
-(defun dotspacemacs/user-config (
+(defun dotspacemacs/user-config ()
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
 configuration.
@@ -485,7 +485,7 @@ before packages are loaded."
   ;; (global-set-key (kbd "<f2>") 'evil-next-buffer)
   ;; (global-set-key (kbd "<f3>") 'evil-prev-buffer)
   ;; (global-set-key (kbd "<f4>") 'evil-delete-buffer)
-  ))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

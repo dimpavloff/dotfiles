@@ -42,4 +42,5 @@ updateGoToolchain() {
     go get -u -v github.com/godoctor/godoctor
     go install github.com/godoctor/godoctor
     go get -u -v github.com/fatih/gomodifytags
+    go get -u -v github.com/sourcegraph/go-langserver
 }

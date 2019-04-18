@@ -29,18 +29,23 @@ function glf() { git log --all --grep="$1"; }
 alias emacs='emacsclient -c -a ""'
 
 updateGoToolchain() {
-    go get -u -v github.com/mdempsky/gocode
-    go get -u -v github.com/rogpeppe/godef
-    go get -u -v golang.org/x/tools/cmd/guru
-    go get -u -v golang.org/x/tools/cmd/gorename
-    go get -u -v golang.org/x/tools/cmd/goimports
-    go get -u -v github.com/zmb3/gogetdoc
-    go get -u -v github.com/cweill/gotests/...
-    go get -u github.com/haya14busa/gopkgs/cmd/gopkgs
-    go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
-    go get -u github.com/josharian/impl
-    go get -u -v github.com/godoctor/godoctor
-    go install github.com/godoctor/godoctor
-    go get -u -v github.com/fatih/gomodifytags
-    go get -u -v github.com/sourcegraph/go-langserver
+    installs=(
+        github.com/mdempsky/gocode
+        github.com/rogpeppe/godef
+        golang.org/x/tools/cmd/guru
+        golang.org/x/tools/cmd/gorename
+        golang.org/x/tools/cmd/goimports
+        github.com/zmb3/gogetdoc
+        github.com/cweill/gotests/...
+        github.com/haya14busa/gopkgs/cmd/gopkgs
+        github.com/davidrjenni/reftools/cmd/fillstruct
+        github.com/josharian/impl
+        github.com/godoctor/godoctor
+        github.com/fatih/gomodifytags
+        github.com/sourcegraph/go-langserver
+    )
+    for p in $installs; do
+        echo Updating $p
+        go get -u $p
+    done
 }

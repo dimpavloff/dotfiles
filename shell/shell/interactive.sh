@@ -35,6 +35,7 @@ updateGoToolchain() {
         golang.org/x/tools/cmd/guru
         golang.org/x/tools/cmd/gorename
         golang.org/x/tools/cmd/goimports
+        golang.org/x/tools/cmd/gopls
         github.com/zmb3/gogetdoc
         github.com/cweill/gotests/...
         github.com/haya14busa/gopkgs/cmd/gopkgs

@@ -45,7 +45,7 @@ updateGoToolchain() {
         github.com/fatih/gomodifytags
         github.com/sourcegraph/go-langserver
     )
-    for p in $installs; do
+    for p in ${installs[@]}; do
         echo Updating $p
         go get -u $p
     done

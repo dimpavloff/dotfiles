@@ -54,6 +54,9 @@ This function should only modify configuration layer settings."
      json
      (lsp :variables
           lsp-ui-doc-enable nil)
+     markdown
+     multiple-cursors
+     neotree
      protobuf
      (python :variables
              python-backend 'lsp
@@ -68,16 +71,11 @@ This function should only modify configuration layer settings."
             shell-default-height 30
             shell-default-position 'bottom)
      shell-scripts
+     spell-checking
      sql
      swift
      syntax-checking
      yaml
-     ;; spell-checking
-     ;; version-control
-     ;; better-defaults
-     ;; markdown
-     multiple-cursors
-     neotree
      ;; org
      )
 

@@ -66,6 +66,7 @@ This function should only modify configuration layer settings."
              python-shell-interpreter "ipython3")
      (rust :variables
            rust-backend 'lsp
+           lsp-rust-server 'rust-analyzer
            rust-format-on-save t)
      (shell :variables
             shell-default-height 30

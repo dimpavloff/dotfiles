@@ -30,23 +30,21 @@ alias emacs='emacsclient -c -a ""'
 
 updateGoToolchain() {
     installs=(
-        github.com/mdempsky/gocode
         github.com/rogpeppe/godef
         golang.org/x/tools/cmd/guru
         golang.org/x/tools/cmd/gorename
         golang.org/x/tools/cmd/goimports
         golang.org/x/tools/gopls
         github.com/zmb3/gogetdoc
-        github.com/cweill/gotests/...
+        github.com/cweill/gotests
         github.com/haya14busa/gopkgs/cmd/gopkgs
         github.com/davidrjenni/reftools/cmd/fillstruct
         github.com/josharian/impl
         github.com/godoctor/godoctor
         github.com/fatih/gomodifytags
-        github.com/sourcegraph/go-langserver
     )
-    for p in ${installs[@]}; do
-        echo Updating $p
-        go get -u $p
+    for d in ${installs[@]}; do
+        echo Updating $d
+        GO111MODULE=on go get $d@latest
     done
 }

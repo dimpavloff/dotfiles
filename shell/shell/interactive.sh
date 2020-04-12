@@ -37,11 +37,15 @@ updateGoToolchain() {
         golang.org/x/tools/gopls
         github.com/zmb3/gogetdoc
         github.com/cweill/gotests
-        github.com/haya14busa/gopkgs/cmd/gopkgs
         github.com/davidrjenni/reftools/cmd/fillstruct
         github.com/josharian/impl
         github.com/godoctor/godoctor
         github.com/fatih/gomodifytags
+        github.com/uudashr/gopkgs
+        github.com/go-delve/delve/cmd/dlv
+        github.com/lukehoban/go-outline
+        golang.org/x/lint/golint
+        github.com/mgechev/revive
     )
     for d in ${installs[@]}; do
         echo Updating $d

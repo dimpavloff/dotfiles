@@ -43,6 +43,7 @@ This function should only modify configuration layer settings."
                       auto-completion-enable-help-tooltip 'manual)
 
 
+     dap
      emacs-lisp
      evil-commentary
      git

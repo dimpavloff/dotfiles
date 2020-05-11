@@ -52,3 +52,18 @@ updateGoToolchain() {
         GO111MODULE=on go get $d@latest
     done
 }
+
+installVSCodeExtensions() {
+    installs=(
+	ms-python.python
+	ms-vscode-remote.remote-containers
+	ms-vscode-remote.remote-ssh
+	ms-vscode-remote.remote-ssh-edit
+	ms-vscode.Go
+	vscodevim.vim
+    )
+    for d in ${installs[@]}; do
+        echo Installing $d
+	code --install-extension $d
+    done
+}

@@ -1,0 +1,8 @@
+{
+    "rust-client.channel": "beta",
+    "go.useLanguageServer": true,
+    "workbench.activityBar.visible": true,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false
+
+}

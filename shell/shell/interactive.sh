@@ -27,6 +27,7 @@ function glf() { git log --all --grep="$1"; }
 
 # run emacs daemon if not running and connect
 alias emacs='emacsclient -c -a ""'
+alias doom='~/.emacs.d/bin/doom'
 
 updateGoToolchain() {
     installs=(

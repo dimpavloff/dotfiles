@@ -78,7 +78,7 @@ This function should only modify configuration layer settings."
      swift
      syntax-checking
      yaml
-     ;; org
+     org
      )
 
    ;; List of additional packages that will be installed without being

@@ -78,7 +78,8 @@ This function should only modify configuration layer settings."
      swift
      syntax-checking
      yaml
-     org
+(org :variables
+       org-enable-roam-support nil)
      )
 
    ;; List of additional packages that will be installed without being
@@ -541,6 +542,9 @@ before packages are loaded."
   (define-key evil-visual-state-map (kbd "M-k") 'drag-stuff-up)
   (define-key evil-normal-state-map (kbd "M-j") 'move-text-line-down)
   (define-key evil-normal-state-map (kbd "M-k") 'move-text-line-up)
+  (setq org-roam-directory "~/Dropbox/org/roam")
+  (setq org-roam-db-location "~/Dropbox/org/roam/db/org-roam.db")
+  (add-hook 'org-mode-hook 'org-roam-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

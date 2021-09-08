@@ -79,7 +79,11 @@ This function should only modify configuration layer settings."
      syntax-checking
      yaml
 (org :variables
-       org-enable-roam-support t)
+       org-enable-roam-support t
+       org-roam-directory "~/Dropbox/org/roam"
+       org-roam-db-location "~/Dropbox/org/roam/db/org-roam.db"
+       org-roam-v2-ack t
+)
      )
 
    ;; List of additional packages that will be installed without being
@@ -551,10 +555,6 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-  ;; NOTE this should be in user-config but see
-  ;; https://github.com/syl20bnr/spacemacs/issues/14477#issuecomment-815164427
-  (setq org-roam-directory "~/Dropbox/org/roam")
-  (setq org-roam-db-location "~/Dropbox/org/roam/db/org-roam.db")
   )
 
 

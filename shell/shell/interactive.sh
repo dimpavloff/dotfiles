@@ -31,26 +31,28 @@ alias doom='~/.emacs.d/bin/doom'
 
 updateGoToolchain() {
     installs=(
-        github.com/rogpeppe/godef
-        golang.org/x/tools/cmd/guru
-        golang.org/x/tools/cmd/gorename
-        golang.org/x/tools/cmd/goimports
-        golang.org/x/tools/gopls
-        github.com/zmb3/gogetdoc
-        github.com/cweill/gotests
-        github.com/davidrjenni/reftools/cmd/fillstruct
-        github.com/josharian/impl
-        github.com/godoctor/godoctor
-        github.com/fatih/gomodifytags
-        github.com/uudashr/gopkgs
-        github.com/go-delve/delve/cmd/dlv
-        github.com/lukehoban/go-outline
-        golang.org/x/lint/golint
+        github.com/golangci/golangci-lint/cmd/golangci-lint
         github.com/mgechev/revive
+        github.com/cweill/gotests/...
+        github.com/davidrjenni/reftools/cmd/fillstruct
+        github.com/fatih/gomodifytags
+        github.com/go-delve/delve/cmd/dlv
+        github.com/godoctor/godoctor
+        github.com/josharian/impl
+        github.com/ramya-rao-a/go-outline
+        github.com/rogpeppe/godef
+        github.com/uudashr/gopkgs
+        github.com/zmb3/gogetdoc
+        golang.org/x/lint/golint
+        golang.org/x/tools/cmd/godoc
+        golang.org/x/tools/cmd/goimports
+        golang.org/x/tools/cmd/gorename
+        golang.org/x/tools/cmd/guru
+        golang.org/x/tools/gopls
     )
     for d in ${installs[@]}; do
         echo Updating $d
-        GO111MODULE=on go get $d@latest
+        GO111MODULE=on go install -v -trimpath -ldflags '-s -w' $d@latest
     done
 }
 

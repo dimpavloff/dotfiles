@@ -585,10 +585,10 @@ before packages are loaded."
   ;; (global-set-key (kbd "<f2>") 'evil-next-buffer)
   ;; (global-set-key (kbd "<f3>") 'evil-prev-buffer)
   ;; (global-set-key (kbd "<f4>") 'evil-delete-buffer)
+  (define-key evil-normal-state-map (kbd "M-j") 'drag-stuff-down)
+  (define-key evil-normal-state-map (kbd "M-k") 'drag-stuff-up)
   (define-key evil-visual-state-map (kbd "M-j") 'drag-stuff-down)
   (define-key evil-visual-state-map (kbd "M-k") 'drag-stuff-up)
-  (define-key evil-normal-state-map (kbd "M-j") 'move-text-line-down)
-  (define-key evil-normal-state-map (kbd "M-k") 'move-text-line-up)
   (add-hook 'org-mode-hook 'org-roam-mode)
   )
 

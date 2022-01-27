@@ -51,11 +51,31 @@ This function should only modify configuration layer settings."
      git
      (go :variables
          go-backend 'lsp
-         go-tab-width 4)
+         go-tab-width 4
+         lsp-go-directory-filters ["-plz-out" "+plz-out/go/pkg"
+                                   "+plz-out/go/src/cloud.google.com"
+                                   "+plz-out/go/src/contrib.go.opencensus.io"
+                                   "+plz-out/go/src/github.com"
+                                   "+plz-out/go/src/go.etcd.io"
+                                   "+plz-out/go/src/go.opencensus.io"
+                                   "+plz-out/go/src/go.opentelemetry.io"
+                                   "+plz-out/go/src/go.starlark.net"
+                                   "+plz-out/go/src/go.uber.org"
+                                   "+plz-out/go/src/gocloud.dev"
+                                   "+plz-out/go/src/gomodules.xyz"
+                                   "+plz-out/go/src/google.golang.com"
+                                   "+plz-out/go/src/gopkg.in"
+                                   "+plz-out/go/src/istio.io"
+                                   "+plz-out/go/src/k8s.io"
+                                   "+plz-out/go/src/sigs.k8s.io"
+                                   "+plz-out/go/src/software.sslmate.com"
+                                   ]
+         )
      helm
      imenu-list
      json
      (lsp :variables
+          ;; lsp-enable-file-watchers nil
           lsp-ui-doc-enable nil)
      markdown
      multiple-cursors
@@ -78,7 +98,8 @@ This function should only modify configuration layer settings."
      spell-checking
      sql
      swift
-     syntax-checking
+     (syntax-checking :variables
+                      syntax-checking-enable-by-default nil)
      yaml
 (org :variables
        org-enable-roam-support t
@@ -590,6 +611,29 @@ before packages are loaded."
   (define-key evil-visual-state-map (kbd "M-j") 'drag-stuff-down)
   (define-key evil-visual-state-map (kbd "M-k") 'drag-stuff-up)
   (add-hook 'org-mode-hook 'org-roam-mode)
+  (with-eval-after-load 'lsp-mode
+    (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/bin")
+    (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/cd_projects")
+    (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/gen")
+    (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/log")
+    (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/projects")
+    (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/subrepos")
+    (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/surefire-reports")
+    (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/tmp")
+    )
+  ;; (with-eval-after-load 'lsp-mode
+  ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.yaml\\'")
+  ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.html\\'")
+  ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.txt\\'")
+  ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.js\\'")
+  ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.java\\'")
+  ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.sql\\'")
+  ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.ts\\'")
+  ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.json\\'")
+  ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.md\\'")
+  ;;   )
+  (load-file  "/home/dimitar/work/gocore/src/experimental/rory/emacs/please.el")
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

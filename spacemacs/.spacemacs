@@ -627,6 +627,7 @@ before packages are loaded."
   ;; (global-set-key (kbd "<f2>") 'evil-next-buffer)
   ;; (global-set-key (kbd "<f3>") 'evil-prev-buffer)
   ;; (global-set-key (kbd "<f4>") 'evil-delete-buffer)
+  (setq projectile-git-command "fd -0 --strip-cwd-prefix --exclude .git --type file -E '*.{js,ts,css,png,php,jpg,jpeg,java,svg,tsx,scss,jinja2}'")
   (define-key evil-normal-state-map (kbd "M-j") 'drag-stuff-down)
   (define-key evil-normal-state-map (kbd "M-k") 'drag-stuff-up)
   (define-key evil-visual-state-map (kbd "M-j") 'drag-stuff-down)
@@ -654,7 +655,9 @@ before packages are loaded."
   ;;   (add_to-list 'lsp-file-watch-ignored-files ".+\\.md\\'")
   ;;   )
   (load-file  "/home/dimitar/work/gocore/src/experimental/rory/emacs/please.el")
-
+  (add-to-list 'auto-mode-alist '("\\.sqlx\\'" . sql-mode))
+  (add-to-list 'auto-mode-alist '("BUILD'" . python-mode))
+  (add-to-list 'auto-mode-alist '("\\.build_defs\\'" . python-mode))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -669,13 +672,15 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   (quote
-    (drag-stuff yasnippet-snippets writeroom-mode visual-fill-column swift-mode lsp-ui json-navigator helm-xref google-translate evil-magit dumb-jump doom-modeline define-word counsel-projectile counsel swiper ivy company-go centered-cursor-mode ace-window ace-link lsp-mode smartparens flycheck company window-purpose helm helm-core avy magit transient lv pythonic all-the-icons powerline dash org-plus-contrib hydra yapfify yaml-mode xterm-color ws-butler winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org symon string-inflection sql-indent spaceline-all-the-icons smeargle shrink-path shell-pop restart-emacs rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort protobuf-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-bullets open-junk-file neotree nameless multi-term move-text monokai-theme magit-svn magit-gitflow macrostep lorem-ipsum live-py-mode link-hint json-mode insert-shebang indent-guide importmagic imenu-list hungry-delete ht hl-todo highlight-parentheses highlight-numbers highlight-indentation hierarchy helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit fuzzy font-lock+ flycheck-rust flycheck-pos-tip flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav eldoc-eval editorconfig dotenv-mode diminish dash-functional cython-mode company-statistics company-shell company-quickhelp company-lsp company-anaconda column-enforce-mode clean-aindent-mode cargo auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-jump-helm-line ac-ispell))))
+   '(ansible ansible-doc company-ansible jinja2-mode drag-stuff yasnippet-snippets writeroom-mode visual-fill-column swift-mode lsp-ui json-navigator helm-xref google-translate evil-magit dumb-jump doom-modeline define-word counsel-projectile counsel swiper ivy company-go centered-cursor-mode ace-window ace-link lsp-mode smartparens flycheck company window-purpose helm helm-core avy magit transient lv pythonic all-the-icons powerline dash org-plus-contrib hydra yapfify yaml-mode xterm-color ws-butler winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org symon string-inflection sql-indent spaceline-all-the-icons smeargle shrink-path shell-pop restart-emacs rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort protobuf-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-bullets open-junk-file neotree nameless multi-term move-text monokai-theme magit-svn magit-gitflow macrostep lorem-ipsum live-py-mode link-hint json-mode insert-shebang indent-guide importmagic imenu-list hungry-delete ht hl-todo highlight-parentheses highlight-numbers highlight-indentation hierarchy helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit fuzzy font-lock+ flycheck-rust flycheck-pos-tip flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav eldoc-eval editorconfig dotenv-mode diminish dash-functional cython-mode company-statistics company-shell company-quickhelp company-lsp company-anaconda column-enforce-mode clean-aindent-mode cargo auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-jump-helm-line ac-ispell))
+ '(projectile-git-command
+   "fd -0 --strip-cwd-prefix --exclude .git --type file -E '*.{js,ts,css,png,php,jpg,jpeg,svg,tsx,scss,jinja2}' -g"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
 )

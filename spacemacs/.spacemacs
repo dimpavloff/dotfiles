@@ -100,6 +100,7 @@ This function should only modify configuration layer settings."
      swift
      (syntax-checking :variables
                       syntax-checking-enable-by-default nil)
+     tree-sitter
      yaml
 (org :variables
        org-enable-roam-support t
@@ -387,7 +388,7 @@ It should only modify the values of Spacemacs settings."
 
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
-   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-delay 0.1
 
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
@@ -637,11 +638,18 @@ before packages are loaded."
   ;; (global-set-key (kbd "<f3>") 'evil-prev-buffer)
   ;; (global-set-key (kbd "<f4>") 'evil-delete-buffer)
   (setq projectile-git-command "fd -0 --strip-cwd-prefix --exclude .git --type file -E '*.{js,ts,css,png,php,jpg,jpeg,java,svg,tsx,scss,jinja2}'")
+  ;; (setq shell-file-name "/bin/sh")
+  (setq projectile-enable-caching t)
   (define-key evil-normal-state-map (kbd "M-j") 'drag-stuff-down)
   (define-key evil-normal-state-map (kbd "M-k") 'drag-stuff-up)
   (define-key evil-visual-state-map (kbd "M-j") 'drag-stuff-down)
   (define-key evil-visual-state-map (kbd "M-k") 'drag-stuff-up)
   (add-hook 'org-mode-hook 'org-roam-mode)
+  ;; helm-descbinds-mode is activated by being on the helm-mode-hook. However,
+  ;; when activated, helm-descbinds-mode disables which-key-mode. So, adjust the
+  ;; hook to avoid activating it. See
+  ;; https://github.com/syl20bnr/spacemacs/issues/16276
+  (remove-hook 'helm-mode-hook 'helm-descbinds-mode)
   (with-eval-after-load 'lsp-mode
     (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/bin")
     (add-to-list 'lsp-file-watch-ignored-directories "/plz-out/cd_projects")
@@ -683,7 +691,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(ansible ansible-doc company-ansible jinja2-mode drag-stuff yasnippet-snippets writeroom-mode visual-fill-column swift-mode lsp-ui json-navigator helm-xref google-translate evil-magit dumb-jump doom-modeline define-word counsel-projectile counsel swiper ivy company-go centered-cursor-mode ace-window ace-link lsp-mode smartparens flycheck company window-purpose helm helm-core avy magit transient lv pythonic all-the-icons powerline dash org-plus-contrib hydra yapfify yaml-mode xterm-color ws-butler winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org symon string-inflection sql-indent spaceline-all-the-icons smeargle shrink-path shell-pop restart-emacs rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort protobuf-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-bullets open-junk-file neotree nameless multi-term move-text monokai-theme magit-svn magit-gitflow macrostep lorem-ipsum live-py-mode link-hint json-mode insert-shebang indent-guide importmagic imenu-list hungry-delete ht hl-todo highlight-parentheses highlight-numbers highlight-indentation hierarchy helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit fuzzy font-lock+ flycheck-rust flycheck-pos-tip flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav eldoc-eval editorconfig dotenv-mode diminish dash-functional cython-mode company-statistics company-shell company-quickhelp company-lsp company-anaconda column-enforce-mode clean-aindent-mode cargo auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-jump-helm-line ac-ispell))
+   '(tree-sitter-langs tree-sitter tsc ansible ansible-doc company-ansible jinja2-mode drag-stuff yasnippet-snippets writeroom-mode visual-fill-column swift-mode lsp-ui json-navigator helm-xref google-translate evil-magit dumb-jump doom-modeline define-word counsel-projectile counsel swiper ivy company-go centered-cursor-mode ace-window ace-link lsp-mode smartparens flycheck company window-purpose helm helm-core avy magit transient lv pythonic all-the-icons powerline dash org-plus-contrib hydra yapfify yaml-mode xterm-color ws-butler winum which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toml-mode toc-org symon string-inflection sql-indent spaceline-all-the-icons smeargle shrink-path shell-pop restart-emacs rainbow-delimiters racer pyvenv pytest pyenv-mode py-isort protobuf-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-bullets open-junk-file neotree nameless multi-term move-text monokai-theme magit-svn magit-gitflow macrostep lorem-ipsum live-py-mode link-hint json-mode insert-shebang indent-guide importmagic imenu-list hungry-delete ht hl-todo highlight-parentheses highlight-numbers highlight-indentation hierarchy helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit fuzzy font-lock+ flycheck-rust flycheck-pos-tip flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav eldoc-eval editorconfig dotenv-mode diminish dash-functional cython-mode company-statistics company-shell company-quickhelp company-lsp company-anaconda column-enforce-mode clean-aindent-mode cargo auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent ace-jump-helm-line ac-ispell))
  '(projectile-git-command
    "fd -0 --strip-cwd-prefix --exclude .git --type file -E '*.{js,ts,css,png,php,jpg,jpeg,svg,tsx,scss,jinja2}' -g"))
 (custom-set-faces

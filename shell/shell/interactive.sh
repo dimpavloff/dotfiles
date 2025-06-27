@@ -1,6 +1,8 @@
 alias ga='git add'
 alias gb='git branch'
 alias gbd='git branch -d '
+alias br="git for-each-ref --sort=committerdate refs/heads/ --format='%(align:1)%(HEAD)%(end) %(align:32)%(color:green)%(committerdate:iso)%(color:reset)%(end) %(align:40)%(color:yellow)%(refname:short)%(color:reset)%(end) %(authorname) | %(align:50)%(contents:subject)%(end)"
+alias branch="git for-each-ref --sort=committerdate refs/heads/ --format='%(align:1)%(HEAD)%(end) %(align:32)%(color:green)%(committerdate:iso)%(color:reset)%(end) %(align:40)%(color:yellow)%(refname:short)%(color:reset)%(end) %(authorname) | %(align:50)%(contents:subject)%(end)"
 alias gc='git commit'
 alias gcm='git commit -m'
 alias gco='git checkout'
